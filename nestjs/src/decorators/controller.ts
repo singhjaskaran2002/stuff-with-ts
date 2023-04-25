@@ -1,4 +1,4 @@
-import { app } from '../..';
+import { app } from '../../server';
 import { IRouteDefinition } from '../interfaces/routeDefinition';
 
 export function Controller(baseRoute: string, middlewares: Array<Function> = []) {

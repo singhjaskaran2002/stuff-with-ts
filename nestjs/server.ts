@@ -14,4 +14,4 @@ app.use('*', (_: express.Request, res: express.Response) => {
 	res.status(404).json(errorMessages.ROUTE_NOT_FOUND);
 });
 
-app.listen(3000, () => console.log('Server started at http://localhost:3000'));
+app.listen(8000, () => console.log('Server started at http://localhost:8000'));

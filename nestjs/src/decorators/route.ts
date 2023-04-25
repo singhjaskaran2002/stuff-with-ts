@@ -1,22 +1,20 @@
-import express from 'express';
-
 import { IRouteDefinition } from '../interfaces/routeDefinition';
 
 export function Route(
 	method: string,
 	path: string,
-	middleware: express.RequestHandler[] = []
+	middleware: Function[] = []
 ) {
 	return function (target: any, _: string, descriptor: PropertyDescriptor) {
 		const originalMethod = descriptor.value;
 
-		if (!Reflect.hasMetadata('routes', target.constructor.prototype)) {
-			Reflect.defineMetadata('routes', [], target.constructor.prototype);
+		if (!Reflect.hasMetadata('routes', target.constructor)) {
+			Reflect.defineMetadata('routes', [], target.constructor);
 		}
 
 		const routes: IRouteDefinition[] = Reflect.getMetadata(
 			'routes',
-			target.constructor.prototype
+			target.constructor
 		);
 		routes.push({ method, path, middleware, handler: originalMethod });
 	};

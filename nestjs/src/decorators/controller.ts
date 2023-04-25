@@ -1,5 +1,6 @@
 import { app } from '../server';
 import { IRouteDefinition } from '../interfaces/routeDefinition';
+import { VERSION } from '../constants/app';
 
 export function Controller(baseRoute: string, middlewares: Array<Function> = []) {
 	return function (target: any) {
@@ -9,7 +10,7 @@ export function Controller(baseRoute: string, middlewares: Array<Function> = [])
 		);
 		for (const route of routes) {
 			const { method, path, middleware, handler } = route;
-			app[method](`${baseRoute}${path}`, [...middlewares, ...[middleware]], handler);
+			app[method](`${VERSION.v1}${baseRoute}${path}`, [...middlewares, ...[middleware]], handler);
 		}
 	};
 }

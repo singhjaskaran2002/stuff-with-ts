@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "name": "launch program",
+            "cwd": "${workspaceFolder}/nestjs",
+            "runtimeExecutable": "yarn",
+            "runtimeArgs": [
+                "dev:debug"
+            ],
+            "restart": true,
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+        }
+    ]
+}
